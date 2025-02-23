@@ -196,32 +196,24 @@ export default function ExportPage() {
             </div>
 
             {/* Table */}
-            <div className="flex flex-col justify-between bg-white rounded-lg shadow-sm border h-[35rem]">
-                <table className="w-full">
-                    <thead className="bg-gray-50 border-b border-gray-200">
-                        <tr>
-                            <th className="px-6 py-4 text-left text-sm font-medium text-gray-500">Job ID</th>
-                            <th className="px-6 py-4 text-left text-sm font-medium text-gray-500">Mailbox Count</th>
-                            <th className="px-6 py-4 text-left text-sm font-medium text-gray-500">Export Date</th>
-                            <th className="px-6 py-4 text-left text-sm font-medium text-gray-500">Platform</th>
-                            <th className="px-6 py-4 text-left text-sm font-medium text-gray-500">Export Status</th>
-                            <th className="px-6 py-4 text-right text-sm font-medium text-gray-500"></th>
-                        </tr>
-                    </thead>
-                </table>
-
-                <div className="flex-1 overflow-auto">
+            <div className="flex flex-col bg-white rounded-lg shadow-sm border overflow-hidden max-h-[35rem]">
+                <div className="overflow-auto flex-1">
                     <table className="w-full">
+                        <thead className="bg-gray-50 border-b border-gray-200 sticky top-0 z-10">
+                            <tr>
+                                <th className="px-6 py-4 text-left text-sm font-medium text-gray-500">Job ID</th>
+                                <th className="px-6 py-4 text-left text-sm font-medium text-gray-500">Mailbox Count</th>
+                                <th className="px-6 py-4 text-left text-sm font-medium text-gray-500">Export Date</th>
+                                <th className="px-6 py-4 text-left text-sm font-medium text-gray-500">Platform</th>
+                                <th className="px-6 py-4 text-left text-sm font-medium text-gray-500">Export Status</th>
+                                <th className="px-6 py-4 text-right text-sm font-medium text-gray-500"></th>
+                            </tr>
+                        </thead>
                         <tbody className="divide-y divide-gray-200">
                             {paginatedData.map((item) => (
                                 <React.Fragment key={item.jobId}>
                                     <tr className="hover:bg-gray-50">
-                                        <td className="px-6 py-4 text-sm text-gray-900">
-                                            {item.jobId}
-                                            <Button variant="ghost" size="sm" className="ml-2 p-0 h-auto">
-                                                <Copy className="w-4 h-4  text-gray-400 hover:text-gray-600" />
-                                            </Button>
-                                        </td>
+                                        <td className="px-6 py-4 text-sm text-gray-900">{item.jobId}</td>
                                         <td className="px-6 py-4 text-sm text-gray-500">{item.mailboxCount}</td>
                                         <td className="px-6 py-4 text-sm text-gray-500">{item.exportDate}</td>
                                         <td className="px-6 py-4 text-sm text-gray-500">{item.platform}</td>
@@ -298,21 +290,18 @@ export default function ExportPage() {
                         </tbody>
                     </table>
                 </div>
-
-                {/* Pagination */}
+                {/* Pagination Footer */}
                 {totalPages > 1 && (
-                    <div className="flex items-center justify-between px-6 py-3 border-t border-gray-200 bg-gray-50">
-                        <div className="flex items-center">
-                            <p className="text-sm text-gray-700">
-                                Showing <span className="font-medium">{((currentPage - 1) * itemsPerPage) + 1}</span>
-                                {' '}-{' '}
-                                <span className="font-medium">
-                                    {Math.min(currentPage * itemsPerPage, filteredData.length)}
-                                </span>
-                                {' '}of{' '}
-                                <span className="font-medium">{filteredData.length}</span> results
-                            </p>
-                        </div>
+                    <div className="flex items-center justify-between px-6 py-3 border-t border-gray-200 bg-gray-50 sticky bottom-0">
+                        <p className="text-sm text-gray-700">
+                            Showing <span className="font-medium">{((currentPage - 1) * itemsPerPage) + 1}</span>
+                            {' '}-{' '}
+                            <span className="font-medium">
+                                {Math.min(currentPage * itemsPerPage, filteredData.length)}
+                            </span>
+                            {' '}of{' '}
+                            <span className="font-medium">{filteredData.length}</span> results
+                        </p>
                         <div className="flex items-center space-x-2">
                             <span className="text-sm text-gray-700">
                                 {currentPage} of {totalPages}
@@ -337,6 +326,9 @@ export default function ExportPage() {
                     </div>
                 )}
             </div>
+
+
+
 
         </div>
     );
