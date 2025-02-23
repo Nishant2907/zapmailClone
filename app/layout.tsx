@@ -69,7 +69,7 @@ export default function RootLayout({
               isCollapsed={isCollapsed}
               onToggle={() => setIsCollapsed(!isCollapsed)}
             />
-            <main className="flex-1 px-8 py-3 ml-0">
+            <main className="flex-1 px-8 py-3 ml-0 max-h-screen overflow-auto">
               {children}
             </main>
           </div>
