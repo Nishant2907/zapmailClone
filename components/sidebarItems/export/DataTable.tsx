@@ -158,40 +158,46 @@ export default function ExportPage() {
                     <span className="text-blue-600 font-medium">{filteredData.length}</span>
                 </div>
 
-                <div className="flex gap-4">
-                    <Select
-                        value={platformFilter}
-                        onValueChange={(value) => {
-                            setPlatformFilter(value);
-                            setCurrentPage(1);
-                        }}
-                    >
-                        <SelectTrigger className="w-[180px]">
-                            <SelectValue placeholder="Platform" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="All">All</SelectItem>
-                            <SelectItem value="SmartLead">SmartLead</SelectItem>
-                            <SelectItem value="Manual">Manual</SelectItem>
-                        </SelectContent>
-                    </Select>
+                <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-2">
+                        <p>Platform:</p>
+                        <Select
+                            value={platformFilter}
+                            onValueChange={(value) => {
+                                setPlatformFilter(value);
+                                setCurrentPage(1);
+                            }}
+                        >
+                            <SelectTrigger className="w-[180px]">
+                                <SelectValue placeholder="Platform" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="All">All</SelectItem>
+                                <SelectItem value="SmartLead">SmartLead</SelectItem>
+                                <SelectItem value="Manual">Manual</SelectItem>
+                            </SelectContent>
+                        </Select>
+                    </div>
 
-                    <Select
-                        value={statusFilter}
-                        onValueChange={(value) => {
-                            setStatusFilter(value);
-                            setCurrentPage(1);
-                        }}
-                    >
-                        <SelectTrigger className="w-[180px]">
-                            <SelectValue placeholder="Status" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="All">All</SelectItem>
-                            <SelectItem value="Completed">Completed</SelectItem>
-                            <SelectItem value="Failed">Failed</SelectItem>
-                        </SelectContent>
-                    </Select>
+                    <div className="flex items-center gap-2">
+                        <p>Status:</p>
+                        <Select
+                            value={statusFilter}
+                            onValueChange={(value) => {
+                                setStatusFilter(value);
+                                setCurrentPage(1);
+                            }}
+                        >
+                            <SelectTrigger className="w-[180px]">
+                                <SelectValue placeholder="Status" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="All">All</SelectItem>
+                                <SelectItem value="Completed">Completed</SelectItem>
+                                <SelectItem value="Failed">Failed</SelectItem>
+                            </SelectContent>
+                        </Select>
+                    </div>
                 </div>
             </div>
 

@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Mail, Globe, Wallet } from "lucide-react";
 import ServiceToggle from "@/components/layout/ServiceToggle";
-
+import MailboxDashboard from "@/components/sidebarItems/mailboxes/mailbox"
 export default function MailboxPage() {
   return (
     <>
@@ -15,7 +15,8 @@ export default function MailboxPage() {
       </div>
 
       <div className="py-6 space-y-6">
-        <p>meow</p>
+        {/* <p>meow</p> */}
+        <MailboxDashboard />
       </div>
     </>
   );
